@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Load Testing Canvas</title>
+	<style type="text/css">
+		#wrapper:after, .content-wrapper:after{
+            visibility: hidden;
+             display: block;
+             font-size: 0;
+             content: " ";
+             clear: both;
+             height: 0;
+        }
+        #chart, #chartContainer {
+            position: relative;
+            display: inline-block;
+            *zoom:1; *display:inline;
+            width: 49%;
+            height: auto;
+            box-sizing: border-box;
+            vertical-align: top;    
+        }
+        canvas {
+            width: 100%;
+            height: 100%;
+        }
+        svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+	</style>
+</head>
+<body>
+	<div id = "wrapper">
+		<div id="chart"></div>
+        <div id = "chartButtons"> </div>
+        <div id="tooltip"></div>
+		<div id="chartContainer"></div>
+		<input type="checkbox" name="type">Change to Logarithmic view.
+	</div>
+	<div id = 'buttons'></div>
+	<div id = 'result'></div>
+</body>
+<script type="text/javascript" src= './js/lib/fusioncharts.js'></script>
+<script type="text/javascript" src= './js/lib/themes/fusioncharts.theme.fint.js'></script>
+
+<script type="text/javascript" src = './js/redraphael/package/raphael-min.js'></script>
+<script type="text/javascript" src = './js/kdTree.js'></script>
+<script type="text/javascript" src = './js/zoom.js'></script>
+</html>

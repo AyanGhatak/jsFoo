@@ -3,7 +3,26 @@ var svgNS = "http://www.w3.org/2000/svg",
 	wrapper = document.getElementById("wrapper"),
 	buttonWrapper = document.getElementById("buttons"),
 	result = document.getElementById('result'),
-	ctx = container.getContext("2d");  
+	ctx = container.getContext("2d"),
+	dataGenerator = (function () {
+		var data = [];
+		return {
+			add: function () {
+				var obj = {
+					x: Math.random() * 625,
+					y: Math.random() * 325
+				}
+				data.push(obj);
+				return obj;
+			},
+			get: function () {
+				return data;
+			},
+			reset: function () {
+				data.length = 0;
+			}
+		};
+	})();
 
 function createCircle(value){	
 	var hoverFN = function (e) {
@@ -18,14 +37,16 @@ function createCircle(value){
     		time1,
     		len = 10;
     	dispose();
+    	dataGenerator.reset();
     	time1 = performance.now();
     	for (j = 0; j < len; j += 1) {
     		setTimeout((function (j) {
     			return function () {
     				ctx.beginPath();
 					for (i = 0; i < value/len; i += 1) {
-						x = Math.random() * 625;
-						y = Math.random() * 325;
+						obj = dataGenerator.add();
+						x = obj.x;
+						y = obj.y;
 						ctx.moveTo(x + 3, y);
 			    		ctx.arc(x, y, 3, 0, 2 * Math.PI);
 			    	}
@@ -37,9 +58,9 @@ function createCircle(value){
     			}
     		})(j), 50);
 	    }
-    	
+    	// updateResult.display(value, (performance.now() - time1).toFixed(2));
     }
-} 
+}
 var updateResult = (function () {
 	var obj = {},
 		JSONData = {
