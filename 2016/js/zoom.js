@@ -34,14 +34,13 @@ function createCircle(value){
         var i,
             circle,
             chartRef;
-        dispose();
         dataGenerator.reset();
         // data generation.
         for (i = 0; i < value; i += 1) {
             dataGenerator.add();
         }
         window.time1 = performance.now();
-        chartRef = new Chart().render();
+        chartRef = new Chart().dispose().render();
         console.log(performance.now() - window.time1);
     }
 }
@@ -139,7 +138,7 @@ function createButton(value){
 }
 
 function dispose() {
-    // TODO.
+    
 }
 
 function init(arr) {
@@ -393,6 +392,14 @@ function Chart() {
         kDTree: new KdTree(),
         data: data
     }
+    return iapi;
+}
+
+Chart.prototype.dispose = function () {
+    var iapi = this,
+        paper = iapi.components.paper;
+    // todo code.
+    //paper.remove();
     return iapi;
 }
 

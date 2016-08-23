@@ -43,25 +43,17 @@ function createCircle(value){
     	dispose();
     	dataGenerator.reset();
     	time1 = performance.now();
-    	for (j = 0; j < len; j += 1) {
-    		setTimeout((function (j) {
-    			return function () {
-    				ctx.beginPath();
-					for (i = 0; i < value/len; i += 1) {
-						obj = dataGenerator.add();
-						x = obj.x;
-						y = obj.y;
-						ctx.moveTo(x + 3, y);
-			    		ctx.arc(x, y, 3, 0, 2 * Math.PI);
-			    	}
-			    	ctx.stroke();
-			    	ctx.closePath();
-			    	if (j === len - 1) {
-						updateResult.display(value, (performance.now() - time1).toFixed(2), len);	    		
-			    	}
-    			}
-    		})(j), 50);
-	    }
+    	ctx.beginPath();
+		for (i = 0; i < value; i += 1) {
+	    	obj = dataGenerator.add();
+			x = obj.x;
+			y = obj.y;
+			ctx.moveTo(x + 3, y);
+    		ctx.arc(x, y, 3, 0, 2 * Math.PI);
+    	}
+    	ctx.stroke();
+    	ctx.closePath();	
+    	updateResult.display(value, (performance.now() - time1).toFixed(2), len);
     }
 }
 var updateResult = (function () {
