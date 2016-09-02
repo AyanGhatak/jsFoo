@@ -173,7 +173,7 @@ function createButton(value){
 }
 
 function dispose() {
-	ctx.clearRect(0,0,625,350);
+	ctx.clearRect(0,0,container.width,container.height);
 }
 
 function init(arr) {
