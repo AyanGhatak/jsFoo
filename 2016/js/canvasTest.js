@@ -72,6 +72,7 @@ var updateResult = (function () {
 		        "xaxisname": "Number of circles",
 		        "yaxisname": "Time taken in ms",
 		        "showValues": "1",
+		        "showLegend": "0",
 				"transposeAxis": "1",
 		        "theme": "fint"
 		    },
@@ -116,7 +117,7 @@ var updateResult = (function () {
 					}
 				}
 				dataset.push({
-					'seriesname': prop,
+					//'seriesname': prop,
 					data: data
 				});
 			}
@@ -125,7 +126,7 @@ var updateResult = (function () {
 			}
 			else {
 				chartRef = new FusionCharts({
-			        type: 'msline',
+			        type: 'mscolumn2d',
 			        // type: 'logmsline',
 			        renderAt: 'chartContainer',
 			        width: '625',
@@ -137,10 +138,10 @@ var updateResult = (function () {
 		},
 		changeChartType = function (isLogarithmic) {
 			if (isLogarithmic) {
-				chartRef.chartType('logmsline');
+				chartRef.chartType('logmscolumn2d');
 			}
 			else {
-				chartRef.chartType('msline');	
+				chartRef.chartType('mscolumn2d');	
 			}
 		};
 	return {

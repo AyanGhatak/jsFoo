@@ -85,7 +85,7 @@ var updateResult = (function () {
             }
             else {
                 chartRef = new FusionCharts({
-                    type: 'msline',
+                    type: 'mscolumn2d',
                     // type: 'logmsline',
                     renderAt: 'chartContainer',
                     width: '625',
@@ -97,10 +97,10 @@ var updateResult = (function () {
         },
         changeChartType = function (isLogarithmic) {
             if (isLogarithmic) {
-                chartRef.chartType('logmsline');
+                chartRef.chartType('logmscolumn2d');
             }
             else {
-                chartRef.chartType('msline');   
+                chartRef.chartType('mscolumn2d');   
             }
         };
     return {
